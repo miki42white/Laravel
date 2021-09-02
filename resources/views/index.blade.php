@@ -22,7 +22,7 @@
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    padding:0 20px 20px 20px;
+    padding:0 40px 20px 20px;
   }
   .title{
     font-size:25px;
@@ -34,6 +34,14 @@
   input{
     border:1px solid #eeeeee;
     border-radius: 3px;
+  }
+  .input-add{
+    width:70%;
+    height:30px;
+  }
+  .input-update{
+    width:90%;
+    height:30px;
   }
   .add-btn,
   .update-btn,
@@ -66,6 +74,9 @@
     background-color: #77f9c3;
     color:#ffff;
   }
+  table{
+    margin-top:30px;
+  }
   </style>
 </head>
 
@@ -76,7 +87,7 @@
     <div class="todo">
       <form action="/todo/create" method="POST">
       @csrf
-      <input type="text" name="content">
+      <input type="text" name="content" class="input-add">
       <input type="submit" value="追加" class="add-btn">
     </form>
     <table>
