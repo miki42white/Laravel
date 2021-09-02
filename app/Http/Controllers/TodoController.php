@@ -19,4 +19,15 @@ class TodoController extends Controller
         Todo::create($form);
         return redirect('/');
     }
+    public function update(Request $request)
+    {
+        $this->validate($request, Todo::$rules);
+        Todo::where('id', $request->id)->update(['content'=>$request->content]);
+        return redirect('/');
+    }
+    public function remove(Request $request)
+    {
+        Todo::where('id',$request->id)->delete();
+        return redirect('/');
+    }
 }

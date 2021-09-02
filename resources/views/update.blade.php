@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COACHTECH</title>
-  <style>
+@extends('layouts.index')
+<style>
   .container{
     background-color: #2d197c;
     width:100vw;
@@ -66,8 +59,17 @@
     background-color: #77f9c3;
     color:#ffff;
   }
-  </style>
-</head>
+</style>
+
+@if (count($errors) > 0)
+<ul>
+  @foreach ($errors->all() as $error)
+  <li>
+    {{$error}}
+  </li>
+  @endforeach
+</ul>
+@endif
 
 <body>
 <div class="container">
@@ -86,30 +88,20 @@
         <th>更新</th>
         <th>削除</th>
       </tr>
-      @foreach($items as $item)
       <tr>
         <td>
-          {{$item["updated_at"]}}
         </td>
-        <form action="/todo/update" method="POST">
-        @csrf
+        <form action="" method="POST"></form>
         <td>
-          <input type="text" class="input-update" value="{{$item["content"]}}" name="content">
+        <input type="text" class="input-update" value="" name="content">
         </td>
         <td>
-        <input type="hidden" name="id" value={{$item["id"]}}>
-        <input type="submit" value="更新" class="update-btn"></button>
-        </form>
+          <button class="update-btn">更新</button>
         </td>
         <td>
-        <form action="/todo/delete" method="POST">
-        @csrf
-        <input type="hidden" name="id" value={{$item["id"]}}>
-        <input type="submit" value="削除" class="delete-btn"></button>
-        </form>
+          <button class="delete-btn">削除</button>
         </td>
       </tr>
-      @endforeach
     </table>
     </div>
   </div>
